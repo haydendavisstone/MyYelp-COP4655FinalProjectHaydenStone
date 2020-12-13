@@ -112,7 +112,7 @@ public class ResultsActivity extends AppCompatActivity{
 
         String id = databaseFavorites.push().getKey();
 
-        Favorite favorite = new Favorite(id, name, address, phone);
+        FavoriteDataAdd favorite = new FavoriteDataAdd(id, name, address, phone);
 
         databaseFavorites.child(id).setValue(favorite);
 
