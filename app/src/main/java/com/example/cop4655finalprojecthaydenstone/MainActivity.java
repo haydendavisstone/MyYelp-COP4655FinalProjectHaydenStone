@@ -7,6 +7,7 @@ package com.example.cop4655finalprojecthaydenstone;
         import android.view.MenuItem;
         import android.view.View;
         import android.widget.Button;
+        import android.widget.TextView;
         import android.widget.Toast;
 
         import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -34,17 +35,27 @@ package com.example.cop4655finalprojecthaydenstone;
         import com.google.firebase.auth.FirebaseUser;
         import com.google.firebase.auth.GoogleAuthProvider;
 
+        import com.android.volley.Request;
+        import com.android.volley.RequestQueue;
+        import com.android.volley.Response;
+        import com.android.volley.VolleyError;
+        import com.android.volley.toolbox.JsonObjectRequest;
+        import com.android.volley.toolbox.Volley;
+
         import org.jetbrains.annotations.NotNull;
+        import org.json.JSONException;
+        import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Context context;
     private SignInButton signInButton;
     private GoogleSignInClient mGoogleSignInClient;
-    private  String TAG = "MainActivity";
     private FirebaseAuth mAuth;
     private Button btnSignOut;
+    private TextView textViewName;
+    private TextView textViewEmail;
     private int RC_SIGN_IN = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,8 +67,6 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navigation_profile:
-                        Intent intent1 = new Intent(MainActivity.this, ProfileActivity.class);
-                        startActivity(intent1);
                         break;
                     case R.id.navigation_search:
                         Intent intent2 = new Intent(MainActivity.this, SearchActivity.class);
@@ -73,6 +82,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        textViewName = findViewById(R.id.textViewName);
+        textViewEmail = findViewById(R.id.textViewEmail);
         signInButton = findViewById(R.id.sign_in_button);
         mAuth = FirebaseAuth.getInstance();
         btnSignOut = findViewById(R.id.sign_out_button);
@@ -97,6 +108,9 @@ public class MainActivity extends AppCompatActivity {
                 mGoogleSignInClient.signOut();
                 Toast.makeText(MainActivity.this,"You are Logged Out",Toast.LENGTH_SHORT).show();
                 btnSignOut.setVisibility(View.INVISIBLE);
+                textViewName.setText("Signed Out");
+                textViewEmail.setText("");
+
             }
         });
 
@@ -158,6 +172,8 @@ public class MainActivity extends AppCompatActivity {
         if(account !=  null){
             String personName = account.getDisplayName();
             String personEmail = account.getEmail();
+            textViewName.setText("Name - " + personName);
+            textViewEmail.setText("Email - " + personEmail);
 
             Toast.makeText(MainActivity.this,personName +" - "+ personEmail ,Toast.LENGTH_SHORT).show();
         }

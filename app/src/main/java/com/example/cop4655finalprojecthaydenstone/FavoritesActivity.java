@@ -3,7 +3,6 @@ package com.example.cop4655finalprojecthaydenstone;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +11,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
 
+
 public class FavoritesActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,7 +26,7 @@ public class FavoritesActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navigation_profile:
-                        Intent intent1 = new Intent(FavoritesActivity.this, ProfileActivity.class);
+                        Intent intent1 = new Intent(FavoritesActivity.this, MainActivity.class);
                         startActivity(intent1);
                         break;
                     case R.id.navigation_search:
@@ -33,8 +34,6 @@ public class FavoritesActivity extends AppCompatActivity {
                         startActivity(intent2);
                         break;
                     case R.id.navigation_favorites:
-                        Intent intent3 = new Intent(FavoritesActivity.this, FavoritesActivity.class);
-                        startActivity(intent3);
                         break;
                 }
 
