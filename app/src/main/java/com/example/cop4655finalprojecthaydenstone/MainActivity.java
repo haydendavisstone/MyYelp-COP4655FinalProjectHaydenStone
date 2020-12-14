@@ -143,7 +143,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void FirebaseGoogleAuth(GoogleSignInAccount acct) {
-        //check if the account is null
         if (acct != null) {
             AuthCredential authCredential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
             mAuth.signInWithCredential(authCredential).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

@@ -20,11 +20,4 @@ public class FavoriteDataGet {
     public String getFavoritePhone() {
         return favoritePhone;
     }
-
-    public void setName(String name) { this.favoriteName = name; }
-
-    public void setAddress(String address) { this.favoriteAddress = address; }
-
-    public void setPhone(String phone) { this.favoritePhone = phone; }
-
 }

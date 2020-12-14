@@ -142,7 +142,7 @@ public class ResultsActivity extends AppCompatActivity{
             public void onResponse(Call<SearchData> call, Response<SearchData> response) {
                 Toast.makeText(getApplicationContext(), "Succeeded", Toast.LENGTH_SHORT).show();
                 businesses = response.body();
-                activeBusiness =businesses.businesses.get(0);
+                activeBusiness = businesses.businesses.get(0);
                 displayStore(activeBusiness);
             }
 
